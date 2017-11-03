@@ -24,16 +24,21 @@ public class Chatbot
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
-		this.questions = null;
+		this.questions = new String [3];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
-		this.topics = null;
+		this.topics = new String [7];
 		this.verbs = new String [4];
-		this.followUps = null;
+		this.followUps = new String [5];
 		
 		buildVerbs();
 		buildShoppingList();
+//		buildFollowups();
+		buildQuestions();
+		buildChatbotResponse();
+		buildTopics();
+		
 	}
 	private void buildVerbs() 
 	{
@@ -63,13 +68,51 @@ public class Chatbot
 	}
 	
 	private void buildQuestions()
+
+
 	{
+		questions [0] = "what is your name?";
+		questions [1] = "what is your quest?";
+		questions [2] = "Do you know what the fox says?";
 		
 	}
-	
+
+	public void buildTopics()
+	{
+		topics [0] = "ring-ding-ding-ding-a-ding-a-ding";
+		topics [1] = "wa-pa-pa-pa-pa-powpow";
+		topics [2] = "AAAooooooooooooooooooo";
+		topics [3] = "Cats go meow";
+		topics [4] = "hatee-hatee-hatee-ho";
+		topics [5] = "tchoff-tchoffo-tchoffo-tchoff-tchoff";
+		topics [6] = "Chacha-Chacha-Chacha-Chow";
+				
+	}
 	public String processConversation(String input)
 	{
-		return null;
+		String chatbotResponse = "";
+		chatbotResponse += "You said:" + "\n" + input + "\n";
+		
+		chatbotResponse += buildChatbotResponse();
+		
+		return chatbotResponse;
+	}
+	
+
+	private String buildChatbotResponse()
+	{
+		String response = "I ";
+		int random = (int) (Math.random() * verbs.length);
+		
+		response += verbs[random];
+		
+		random = (int) (Math.random() * topics.length);
+		response += " " + topics[random] + ".\n";
+		
+		random = (int) (Math.random() * questions.length);
+		response += questions[random];
+		
+		return response; 
 	}
 	
 	public boolean lengthChecker(String input)
@@ -94,7 +137,24 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		return false;
+		if (input == null)
+		{
+			return false;	
+		}
+		if (input == "")
+		{
+			return false;
+		}
+		if (!input.startsWith("@") )
+		{
+			return false;
+		}
+		if (input.substring(1).contains("@"))
+		{
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public boolean contentChecker(String contentCheck)
@@ -124,6 +184,10 @@ public class Chatbot
 
 	public boolean quitChecker(String exitString)
 	{
+		if (exitString.equalsIgnoreCase("quit"))
+			{
+			return true;
+			}
 		return false;
 	}
 
