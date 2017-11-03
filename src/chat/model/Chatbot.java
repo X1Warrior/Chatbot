@@ -22,9 +22,9 @@ public class Chatbot
 	{
 		this.movieList = null;
 		this.shoppingList = new ArrayList<String>();
-		this.cuteAnimalMemes = null;
+		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
-		this.questions = new String [3];
+		this.questions = new String [9];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
@@ -38,7 +38,7 @@ public class Chatbot
 		buildQuestions();
 		buildChatbotResponse();
 		buildTopics();
-		
+		buildCuteAnimals();
 	}
 	private void buildVerbs() 
 	{
@@ -70,10 +70,18 @@ public class Chatbot
 	private void buildQuestions()
 
 
-	{
-		questions [0] = "what is your name?";
+	{ 
+		questions [0] = "what is your full name?";
 		questions [1] = "what is your quest?";
 		questions [2] = "Do you know what the fox says?";
+		questions [3] = "What is most commonly used password";
+		questions [4] = "What is your mother's maiden name?";
+		questions [5] = "What is your social security number?";
+		questions [6] = "How many siblings do you have?";
+		questions [7] = "What was your first pets name?";
+		questions [8] = "What is your birth date?";
+				
+		
 		
 	}
 
@@ -169,6 +177,14 @@ public class Chatbot
 	
 	public boolean shoppingListChecker(String shoppingItem)
 	{
+		for (int i = 0; i < shoppingList.size(); i++)
+		{
+			if(	shoppingItem.contains(shoppingList.get(i)))
+			 {
+				return true; 
+			 }
+		}
+				
 		return false;
 	}
 	

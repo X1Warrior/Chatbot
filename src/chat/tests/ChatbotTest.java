@@ -102,7 +102,7 @@ public class ChatbotTest
 		assertFalse("Racist memes aren't cute", testedChatbot.cuteAnimalMemeChecker("pepe"));
 		assertTrue("Required cuteness missing - pupper", testedChatbot.cuteAnimalMemeChecker("pupper"));
 		assertTrue("Required cuteness missing - otter", testedChatbot.cuteAnimalMemeChecker("otter"));
-		assertTrue("Required cuteness missing - kittie", testedChatbot.cuteAnimalMemeChecker("kittie"));
+		assertTrue("Required cuteness missing - kittie", testedChatbot.cuteAnimalMemeChecker("kittie")); 
 	}
 
 	@Test
