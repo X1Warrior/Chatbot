@@ -9,10 +9,10 @@ public class Movie
 	private String ratingMPAA;
 	private String review;
 	private int length;
-	private String releaseDate;
+	private LocalDate releaseDate;
 	private double starScore;
 	
-	public Movie(String title, String genre, String ratingMPAA, String review, int length, String releaseDate, double starScore)
+	public Movie(String title, String genre, String ratingMPAA, String review, int length, LocalDate releaseDate, double starScore)
 	{
 		this.title = title;
 		this.genre = genre;
@@ -95,6 +95,6 @@ public class Movie
 	
 	public String toString()
 	{
-		return null;
+		return "";
 	}
 }
