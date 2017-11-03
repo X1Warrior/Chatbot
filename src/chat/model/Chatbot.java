@@ -204,6 +204,10 @@ public class Chatbot
 			{
 			return true;
 			}
+		if (exitString.equals("exit"))
+		{
+		
+		}
 		return false;
 	}
 
