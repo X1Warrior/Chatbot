@@ -17,6 +17,7 @@ public class Chatbot
 	private String content;
 	private String intro;
 	private LocalTime currentTime;
+	private String [] keyboardmash;
 	
 	public Chatbot(String username)
 	{
@@ -31,6 +32,7 @@ public class Chatbot
 		this.topics = new String [7];
 		this.verbs = new String [4];
 		this.followUps = new String [5];
+		this.keyboardmash = new String [5];
 		
 		buildVerbs();
 		buildShoppingList();
@@ -39,6 +41,7 @@ public class Chatbot
 		buildChatbotResponse();
 		buildTopics();
 		buildCuteAnimals();
+		buildKeyboardMash();
 	}
 	private void buildVerbs() 
 	{
@@ -60,6 +63,14 @@ public class Chatbot
 		shoppingList.add("protein");
 		shoppingList.add("slug bait");
 		shoppingList.add("Bleh");
+	}
+	
+	private void buildKeyboardMash()
+	{
+		keyboardmash [0] = "ajsdklfjaslk;jglkasjdlf";
+		keyboardmash [1] = "i loveaskljf;lkagdsndgaasd";
+		keyboardmash [2] = "S:KDJbhadsfhgabsdlfihewsgdbviyufgbalhshrfaeihbvaeisy";
+		keyboardmash [3] = "dfnslgsdlgjadsg;lhadf. [3o49[ afpi adpf9 wq3fpija fpi. rifjsdlhnsdfjsd fl;d sflds";
 	}
 	
 	private void buildCuteAnimals()
@@ -140,6 +151,19 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
+		if (input.length() < 3);
+		{
+			return false;
+		}
+		if (input );
+		{
+			return true;
+		}
+		
+		
+		
+		
+		
 		return false;
 	}
 	
