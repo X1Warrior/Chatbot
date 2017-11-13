@@ -21,7 +21,7 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = null;
+		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
@@ -42,6 +42,7 @@ public class Chatbot
 		buildTopics();
 		buildCuteAnimals();
 		buildKeyboardMash();
+		buildMovieList();
 	}
 	private void buildVerbs() 
 	{
@@ -51,10 +52,14 @@ public class Chatbot
 		verbs[3] = "am thinking about";
 		
 	}
-	private void buildMovieList()
-	{
-		
-	}
+		private void buildMovieList()
+		{
+			movieList.add("");
+			movieList.add(new Movie("Pacific Rim"));
+			movieList.add("Thor Ragnarok");
+			movieList.add("Happy Death Days");
+			movieList.add("Gladiator");
+		}
 	
 	private void buildShoppingList()
 	{
@@ -107,6 +112,12 @@ public class Chatbot
 		topics [6] = "Chacha-Chacha-Chacha-Chow";
 				
 	}
+	
+	/**
+	 * The method collects input from user and repeats back what they said, adds a new line and uses the buildChatbotResponse method to randomly select response.
+	 * @param input collects users typed input 
+	 * @return returns users response and returns a random response using buildChatbotResponse
+	 */
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
@@ -117,7 +128,10 @@ public class Chatbot
 		return chatbotResponse;
 	}
 	
-
+	/**
+	 * builds a random response usingMat.random() for the arrays of verbs, topics, and questions.
+	 * @return the random sentence built by the predefined arrays
+	 */
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
@@ -163,7 +177,7 @@ public class Chatbot
 		{
 			return false;
 		}
-		if (input );
+		if (input.contains(s) );
 		{
 			return true;
 		}

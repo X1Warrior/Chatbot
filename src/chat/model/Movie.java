@@ -14,14 +14,15 @@ public class Movie
 	
 	public Movie(String title, String genre, String ratingMPAA, String review, int length, LocalDate releaseDate, double starScore)
 	{
-		this.title = title;
-		this.genre = genre;
-		this.ratingMPAA = ratingMPAA;
-		this.review = review;
-		this.length = length;
+		this.title = "";
+		this.genre = "";
+		this.ratingMPAA = "";
+		this.review = "";
+		this.length = 0;
 		this.releaseDate = releaseDate;
-		this.starScore = starScore;
+		this.starScore = 4.5;
 	}
+
 
 	public String getTitle()
 	{
