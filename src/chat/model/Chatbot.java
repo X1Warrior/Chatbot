@@ -54,11 +54,11 @@ public class Chatbot
 	}
 		private void buildMovieList()
 		{
-			movieList.add("");
-			movieList.add(new Movie("Pacific Rim"));
-			movieList.add("Thor Ragnarok");
-			movieList.add("Happy Death Days");
-			movieList.add("Gladiator");
+//			movieList.add("");
+//			movieList.add(new Movie("Pacific Rim"));
+//			movieList.add("Thor Ragnarok");
+//			movieList.add("Happy Death Days");
+//			movieList.add("Gladiator");
 		}
 	
 	private void buildShoppingList()
@@ -177,16 +177,16 @@ public class Chatbot
 		{
 			return false;
 		}
-		if (input.contains(s) );
-		{
-			return true;
-		}
+//		if (input.contains() );
+//		{
+//			return true;
+//		}
 		
 		
 		
 		
 		
-		return false;
+//		return false;
 	}
 	
 	public boolean userNameChecker(String input)
