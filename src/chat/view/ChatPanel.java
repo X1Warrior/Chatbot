@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.SpringLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ChatPanel extends JPanel
 {
@@ -24,9 +26,15 @@ public class ChatPanel extends JPanel
 			
 			//Initialize GUI data members
 			chatButton = new JButton("chat");
+			chatButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			chatArea = new JTextArea(10, 25);
 			inputField = new JTextField(20);
 			appLayout = new SpringLayout();
+
+
 			
 			
 			
@@ -38,12 +46,24 @@ public class ChatPanel extends JPanel
 		
 		private void setupPanel()
 		{
+			this.setBackground(Color.CYAN);
+			this.setLayout(appLayout);
+			this.add(chatButton);
+			this.add(inputField);
+			this.add(chatArea);
+			
 			
 		}
 		
 		private void setupLayout()
 		{
-			
+			appLayout.putConstraint(SpringLayout.NORTH, chatArea, 20, SpringLayout.NORTH, this);
+			appLayout.putConstraint(SpringLayout.WEST, chatArea, 28, SpringLayout.WEST, this);
+			appLayout.putConstraint(SpringLayout.EAST, chatArea, -22, SpringLayout.EAST, this);
+			appLayout.putConstraint(SpringLayout.NORTH, inputField, 0, SpringLayout.NORTH, chatButton);
+			appLayout.putConstraint(SpringLayout.WEST, inputField, 0, SpringLayout.WEST, chatArea);
+			appLayout.putConstraint(SpringLayout.SOUTH, chatButton, -37, SpringLayout.SOUTH, this);
+			appLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, chatArea);
 		}
 		
 		private void setupListeners()
