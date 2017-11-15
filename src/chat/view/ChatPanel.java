@@ -26,13 +26,11 @@ public class ChatPanel extends JPanel
 			
 			//Initialize GUI data members
 			chatButton = new JButton("chat");
-			chatButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
 			chatArea = new JTextArea(10, 25);
 			inputField = new JTextField(20);
 			appLayout = new SpringLayout();
+			chatArea.setEnabled(false);
+			chatArea.setEditable(false);
 
 
 			
@@ -68,7 +66,10 @@ public class ChatPanel extends JPanel
 		
 		private void setupListeners()
 		{
-			
+			chatButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 		}
 		
 	
