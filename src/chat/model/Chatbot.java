@@ -239,8 +239,24 @@ public class Chatbot
 	
 	public boolean cuteAnimalMemeChecker(String input)
 	{
-		return false;
-	}
+		{
+			int index = 0;
+			
+			for (index = 0; index < cuteAnimalMemes.size(); index +=1)
+			{
+				if (input.contains("pupper") || input.contains("otter") || input.contains("kittie"))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		}
+
 	/**
 	 * @param Searches through the shopping list going up each one and checking if user typed a matching item.
 	 * @return if user matched an item returns true, if not returns false.
