@@ -44,6 +44,9 @@ public class Chatbot
 		buildKeyboardMash();
 		buildMovieList();
 	}
+	/**
+	 * This loads values into the buildChatbotRepsonse method.
+	 */
 	private void buildVerbs() 
 	{
 		verbs[0] = "like";
@@ -52,6 +55,9 @@ public class Chatbot
 		verbs[3] = "am thinking about";
 		
 	}
+	/**
+	 * loads movies into the arrayList for movies
+	 */
 		private void buildMovieList()
 		{
 //			movieList.add("");
@@ -60,7 +66,9 @@ public class Chatbot
 //			movieList.add("Happy Death Days");
 //			movieList.add("Gladiator");
 		}
-	
+	/**
+	 * loads values into the shoppinList array
+	 */
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
@@ -69,7 +77,9 @@ public class Chatbot
 		shoppingList.add("slug bait");
 		shoppingList.add("Bleh");
 	}
-	
+	/**
+	 * loads mashing examples into the KeyboardMashChecker
+	 */
 	private void buildKeyboardMash()
 	{
 		keyboardmash [0] = "ajsdklfjaslk;jglkasjdlf";
@@ -82,7 +92,9 @@ public class Chatbot
 	{
 		
 	}
-	
+	/**
+	 * Loads questions into the BuildChatbotResponse
+	 */
 	private void buildQuestions()
 
 
@@ -100,7 +112,9 @@ public class Chatbot
 		
 		
 	}
-
+/**
+ * Loads Topics into the BuildChatbot Response
+ */
 	public void buildTopics()
 	{
 		topics [0] = "ring-ding-ding-ding-a-ding-a-ding";
@@ -154,7 +168,11 @@ public class Chatbot
 //		}
 		return response; 
 	}
-	
+	/**
+	 * 
+	 * @param collects user input checks if it is long enough 
+	 * @return if the word they put in is long enough to continue (a true or false).
+	 */
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -188,7 +206,10 @@ public class Chatbot
 		
 //		return false;
 	}
-	
+	/**
+	 * @param collects user input and checks for a user name with parameters specified.	
+	 * @return if meets parameters true if fails a parameter return false
+	 */
 	public boolean userNameChecker(String input)
 	{
 		if (input == null)
@@ -220,7 +241,10 @@ public class Chatbot
 	{
 		return false;
 	}
-	
+	/**
+	 * @param Searches through the shopping list going up each one and checking if user typed a matching item.
+	 * @return if user matched an item returns true, if not returns false.
+	 */
 	public boolean shoppingListChecker(String shoppingItem)
 	{
 		for (int i = 0; i < shoppingList.size(); i++)
@@ -243,7 +267,9 @@ public class Chatbot
 	{
 		return false;
 	}
-
+/**
+ * makes it so only exit will quit the program
+ */
 	public boolean quitChecker(String exitString)
 	{
 		if (exitString.equalsIgnoreCase("quit"))
@@ -257,16 +283,19 @@ public class Chatbot
 		return false;
 	}
 
-	public boolean keyboardMashChecker(String sample)
+	public boolean keyboardMashChecker(String keyboardMash)
 	{
-		return false;
+		return keyboardMash;
 	}
 	
 	public List<Movie> getMovieList()
 	{
 		return movieList;
 	}
-	
+	/**
+	 * gets ShoppingList
+	 * @return shoppinglist
+	 */
 	public List<String> getShoppingList()
 	{
 		return shoppingList;
@@ -279,7 +308,7 @@ public class Chatbot
 
 	public String [] getQuestions()
 	{
-		return null;
+		return questions;
 	}
 	
 	public String[] getVerbs()
@@ -296,25 +325,34 @@ public class Chatbot
 	{
 		return followUps;
 	}
-
+/**
+ * gets Username
+ * @return username
+ */
 	public String getUsername()
 	{
 		return username;
 	}
-	
+	/**
+	 * gets Content
+	 * @return content
+	 */
 	public String getContent()
 	{
 		return content;
 	}
-
+/**
+ * gets Intro
+ * @return intro
+ */
 	public String getIntro()
 	{
-		return null;
+		return intro;
 	}
 	
 	public LocalTime getCurrentTime()
 	{
-		return null;
+		return currentTime;
 	}
 	
 	public void setUsername(String username)
