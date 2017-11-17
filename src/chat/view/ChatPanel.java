@@ -17,6 +17,7 @@ public class ChatPanel extends JPanel
 		private JTextField inputField;
 		private JTextArea chatArea;
 		private SpringLayout appLayout;
+		private JButton closeButton;
 		
 		public ChatPanel(ChatbotController appController)
 		{
@@ -29,8 +30,8 @@ public class ChatPanel extends JPanel
 			chatArea = new JTextArea(10, 25);
 			inputField = new JTextField(20);
 			appLayout = new SpringLayout();
-			chatArea.setEnabled(false);
-			chatArea.setEditable(false);
+			closeButton = new JButton("Close");
+
 
 
 			
@@ -49,10 +50,15 @@ public class ChatPanel extends JPanel
 			this.add(chatButton);
 			this.add(inputField);
 			this.add(chatArea);
+			this.add(closeButton);
+			chatArea.setEnabled(false);
+			chatArea.setEditable(false);
 			
 			
 		}
-		
+		/**
+		 * this is how everything is laid out in the GUI.
+		 */
 		private void setupLayout()
 		{
 			appLayout.putConstraint(SpringLayout.NORTH, chatArea, 20, SpringLayout.NORTH, this);
@@ -62,16 +68,31 @@ public class ChatPanel extends JPanel
 			appLayout.putConstraint(SpringLayout.WEST, inputField, 0, SpringLayout.WEST, chatArea);
 			appLayout.putConstraint(SpringLayout.SOUTH, chatButton, -37, SpringLayout.SOUTH, this);
 			appLayout.putConstraint(SpringLayout.EAST, chatButton, 0, SpringLayout.EAST, chatArea);
+			appLayout.putConstraint(SpringLayout.WEST, closeButton, 0, SpringLayout.WEST, chatButton);
+			appLayout.putConstraint(SpringLayout.SOUTH, closeButton, -6, SpringLayout.NORTH, chatButton);
 		}
 		
 		private void setupListeners()
 		{
-			chatButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			chatButton.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent click) 
+				{
+					String userText = inputField.getText();
+					String displayText = appController.interactWithChatbot(userText);
+					chatArea.append(displayText);
+					inputField.setText("");
 				}
 			});
-		}
+			closeButton.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent closing) 
+				{ 					
+				 System.exit(0);
+				}
+		});
 		
+		}	
 	
 	
 	
@@ -79,5 +100,4 @@ public class ChatPanel extends JPanel
 	
 	
 	
-	
-}
+
