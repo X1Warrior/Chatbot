@@ -42,7 +42,33 @@ public class ChatbotController
 			
 			return chatbotSays;
 		}
-
+		public String useCheckers(String text)
+		{
+			String response = "";
+			
+			if(chatbot.contentChecker(text))
+			{
+				response += "This text matches the special content\n";
+			}
+			if(chatbot.cuteAnimalMemeChecker(text))
+			{
+				response += "";
+			}
+			
+			if(chatbot.htmlTagChecker(text))
+			{
+				response += "This text matches the correct HTML tag\n";
+			}
+			
+			if(chatbot.lengthChecker(text))
+			{
+				response += "This matches the correct length.\n";
+			}
+			return response;
+		}
+		
+		
+		
 	private String popupChat(String chat)
 	{
 		String chatbotSays = "";

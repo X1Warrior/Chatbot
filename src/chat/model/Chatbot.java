@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.List;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -60,11 +61,13 @@ public class Chatbot
 	 */
 		private void buildMovieList()
 		{
-//			movieList.add("");
-//			movieList.add(new Movie("Pacific Rim"));
-//			movieList.add("Thor Ragnarok");
-//			movieList.add("Happy Death Days");
-//			movieList.add("Gladiator");
+//		movieList.add(new Movie("Spiderman", "Action", "PG-13", "Clever, funny, and true to the Spider-Man spirit.", 133, LocalDate.of(2017, 6, 28), 4));
+			movieList.add(new Movie("Movie Name", "Documentary", "R", "The worst movie i have ever seen", 120, LocalDate.now(), 1.2));
+			movieList.add(new Movie("Pacific Rim", "Action Packed", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 1.2));
+			movieList.add(new Movie("Thor ragnarock", "Movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 1.2));
+			movieList.add(new Movie("Movie Name", "Movie", "R", "The worst movie i have ever seen", 120, LocalDate.now(), 1.2));
+			movieList.add(new Movie("Hidden Figures", "History/Drama", "PG", "Hidden Figures is a way to show the importance of all races in nasa.", 127, LocalDate.of(2016, 12, 25), 4));
+
 		}
 	/**
 	 * loads values into the shoppinList array
@@ -318,11 +321,11 @@ public class Chatbot
 	{
 		if (exitString.equalsIgnoreCase("quit"))
 			{
-			return true;
+			return false;
 			}
-		if (exitString.equals("exit"))
+		if (exitString.equalsIgnoreCase("exit"))
 		{
-		
+		return true;
 		}
 		return false;
 	}
