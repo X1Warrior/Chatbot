@@ -327,9 +327,9 @@ public class Chatbot
 		return false;
 	}
 
-	public boolean keyboardMashChecker(String keyboardMash)
+//	public boolean keyboardMashChecker(String keyboardMash)
 	{
-		String keyboardMash = ;
+//		String keyboardMash = a;
 	}
 	
 	public List<Movie> getMovieList()

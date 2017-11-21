@@ -4,6 +4,11 @@ import chat.model.Chatbot;
 import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
 
+/**
+ * manages the Chatbot application including the Model and Frame of the iew package.
+ * @author zsto7638
+ * @version 11.21.17 Added Frame 1.3
+ */
 public class ChatbotController
 
 {
@@ -11,7 +16,7 @@ public class ChatbotController
 	private PopupDisplay display;
 	private ChatFrame appFrame;
 	
-	
+
 	public ChatbotController()
 	
 	{
