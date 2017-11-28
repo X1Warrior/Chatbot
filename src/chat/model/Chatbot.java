@@ -61,11 +61,9 @@ public class Chatbot
 	 */
 		private void buildMovieList()
 		{
-//		movieList.add(new Movie("Spiderman", "Action", "PG-13", "Clever, funny, and true to the Spider-Man spirit.", 133, LocalDate.of(2017, 6, 28), 4));
-			movieList.add(new Movie("Movie Name", "Documentary", "R", "The worst movie i have ever seen", 120, LocalDate.now(), 1.2));
-			movieList.add(new Movie("Pacific Rim", "Action Packed", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 1.2));
-			movieList.add(new Movie("Thor ragnarock", "Movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 1.2));
-			movieList.add(new Movie("Movie Name", "Movie", "R", "The worst movie i have ever seen", 120, LocalDate.now(), 1.2));
+			movieList.add(new Movie("Lepracon", "Documentary", "R", "Not very good", 120, LocalDate.now(), 1.2));
+			movieList.add(new Movie("Pacific Rim", "Action Packed", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 4.1));
+			movieList.add(new Movie("Thor ragnarock", "Movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 3.2));
 			movieList.add(new Movie("Hidden Figures", "History/Drama", "PG", "Hidden Figures is a way to show the importance of all races in nasa.", 127, LocalDate.of(2016, 12, 25), 4));
 
 		}
@@ -164,11 +162,31 @@ public class Chatbot
 		
 		random = (int) (Math.random() * 2);
 		
-//		if (random % 2 == 0)
-//		{
-//			random = (int) (Math.random() * movieList.size());
-//			response += "/n" + movieList.get(random).getTitle() + " is a great movie!";
-//		}
+		if (random % 2 == 0)
+		{
+			random = (int) (Math.random() * movieList.size());
+			response += "/n" + movieList.get(random).getTitle() + " is a great movie!";
+		}
+		
+		int followup = (int) (Math.random() * 5);
+		
+		switch (followup)
+		{
+		case 0:
+		response += followUps[0] + "\n";
+		break;
+		case 3:
+		response += followUps[1] + "\n";
+		case 1:
+		response += followUps[2] + "\n";	
+		break;
+		default:
+			response += followUps[4] + "\n";
+			response += followUps[3] + "\n";
+			break;
+		
+		}
+		
 		return response; 
 	}
 	/**
@@ -194,20 +212,39 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
-		if (input.length() < 3);
+		int[] checkers = new int[4];
+		
+		try
+		{
+			input = input.toLowerCase().trim();
+
+			if (!input.startsWith("<"))
+					return false;
+			
+				checkers[0] = 0;
+				checkers[1] = input.indexOf(">");
+				String openingTag = input.substring(checkers[0] + 1, checkers[1]);
+				if (openingTag.equals("p"))
+					return true;
+				checkers[2] = (input.substring(checkers[1]).indexOf("<")) + checkers[1];
+				checkers[3] = (input.substring(checkers[2]).indexOf(">")) + checkers[2];
+				String content = input.substring(checkers[1] + 1, checkers[2]);
+				String endTag = input.substring(checkers[2] + 1, checkers[3]);
+				
+				if (openingTag.contains(("href")))
+						{
+					if (!openingTag.substring(openingTag.indexOf("href") + 4).startsWith("="))
+						return false;
+						}
+				if (!openingTag.startsWith(endTag.substring(1)) && endTag.startsWith("/"))
+					return false;
+				
+				return true;
+		}
+		catch (Exception e)
 		{
 			return false;
 		}
-//		if (input.contains() );
-//		{
-//			return true;
-//		}
-		
-		
-		
-		
-		
-//		return false;
 	}
 	/**
 	 * @param collects user input and checks for a user name with parameters specified.	

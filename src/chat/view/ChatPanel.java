@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class ChatPanel extends JPanel
 {
@@ -19,6 +20,7 @@ public class ChatPanel extends JPanel
 		private SpringLayout appLayout;
 		private JButton closeButton;
 		private JButton checkerButton;
+		private JLabel infoLabel;
 		
 		public ChatPanel(ChatbotController appController)
 		{
@@ -33,6 +35,8 @@ public class ChatPanel extends JPanel
 			appLayout = new SpringLayout();
 			closeButton = new JButton("Close");
 			checkerButton = new JButton("Check");
+			infoLabel = new JLabel("Type to chat with chatbot");
+
 
 			
 						
@@ -53,6 +57,7 @@ public class ChatPanel extends JPanel
 			chatArea.setEnabled(false);
 			chatArea.setEditable(false);
 			this.add(checkerButton);
+			this.add(infoLabel);
 			
 			
 		}
@@ -73,6 +78,8 @@ public class ChatPanel extends JPanel
 			appLayout.putConstraint(SpringLayout.NORTH, checkerButton, 0, SpringLayout.NORTH, chatButton);
 			appLayout.putConstraint(SpringLayout.WEST, checkerButton, 10, SpringLayout.WEST, closeButton);
 			appLayout.putConstraint(SpringLayout.EAST, checkerButton, 0, SpringLayout.EAST, chatArea);
+			appLayout.putConstraint(SpringLayout.NORTH, infoLabel, 0, SpringLayout.NORTH, this);
+			appLayout.putConstraint(SpringLayout.WEST, infoLabel, 133, SpringLayout.WEST, this);
 		}
 		
 		private void setupListeners()

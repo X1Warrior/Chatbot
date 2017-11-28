@@ -52,7 +52,7 @@ public class ChatbotController
 			}
 			if(chatbot.cuteAnimalMemeChecker(text))
 			{
-				response += "";
+				response += "This is a cute animal meme\n";
 			}
 			
 			if(chatbot.htmlTagChecker(text))
