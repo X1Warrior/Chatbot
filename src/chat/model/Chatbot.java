@@ -39,7 +39,6 @@ public class Chatbot
 		buildShoppingList();
 //		buildFollowups();
 		buildQuestions();
-		buildChatbotResponse();
 		buildTopics();
 		buildCuteAnimals();
 		buildKeyboardMash();
@@ -61,10 +60,10 @@ public class Chatbot
 	 */
 		private void buildMovieList()
 		{
-			movieList.add(new Movie("Lepracon", "Documentary", "R", "Not very good", 120, LocalDate.now(), 1.2));
-			movieList.add(new Movie("Pacific Rim", "Action Packed", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 4.1));
-			movieList.add(new Movie("Thor ragnarock", "Movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 3.2));
-			movieList.add(new Movie("Hidden Figures", "History/Drama", "PG", "Hidden Figures is a way to show the importance of all races in nasa.", 127, LocalDate.of(2016, 12, 25), 4));
+			movieList.add(new Movie("Lepracon", "horror", "R", "eh seen better.", 120, LocalDate.now(), 1.2));
+			movieList.add(new Movie("Pacific Rim", "Action Packed for men", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 4.4));
+			movieList.add(new Movie("Thor ragnarock", "Comedy superhero movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 4.2));
+			movieList.add(new Movie("Hidden Figures", "Historic", "PG", "Hidden Figures is a way to show the importance of all races in nasa.", 127, LocalDate.of(2016, 12, 25), 4));
 
 		}
 	/**
@@ -165,7 +164,7 @@ public class Chatbot
 		if (random % 2 == 0)
 		{
 			random = (int) (Math.random() * movieList.size());
-			response += "/n" + movieList.get(random).getTitle() + " is a great movie!";
+			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
 		
 		int followup = (int) (Math.random() * 5);
