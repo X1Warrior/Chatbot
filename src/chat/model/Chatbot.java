@@ -25,15 +25,15 @@ public class Chatbot
 		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
-		this.currentTime = null;
-		this.questions = new String [9];
+		this.currentTime = LocalTime.now();
+		this.questions = new String [10];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
 		this.topics = new String [7];
 		this.verbs = new String [4];
 		this.followUps = new String [5];
-		this.keyboardmash = new String [5];
+		this.setKeyboardmash(new String [5]);
 		
 		buildVerbs();
 		buildShoppingList();
@@ -41,7 +41,6 @@ public class Chatbot
 		buildQuestions();
 		buildTopics();
 		buildCuteAnimals();
-		buildKeyboardMash();
 		buildMovieList();
 	}
 	/**
@@ -64,6 +63,8 @@ public class Chatbot
 			movieList.add(new Movie("Pacific Rim", "Action Packed for men", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 4.4));
 			movieList.add(new Movie("Thor ragnarock", "Comedy superhero movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 4.2));
 			movieList.add(new Movie("Hidden Figures", "Historic", "PG", "Hidden Figures is a way to show the importance of all races in nasa.", 127, LocalDate.of(2016, 12, 25), 4));
+			movieList.add(new Movie("justice league", "SuperHero's fighting aliens", "PG", "Not amazing didnt do so well with critics..", 127, LocalDate.of(2017, 11, 25), 2.8));
+			movieList.add(new Movie("WonderWomen", "Action packed superHero", "PG", "Amazing critics and people everywhere loved it.", 127, LocalDate.of(2017, 9, 27), 4.6));
 
 		}
 	/**
@@ -74,19 +75,13 @@ public class Chatbot
 		shoppingList.add("snacks");
 		shoppingList.add("veggies");
 		shoppingList.add("protein");
-		shoppingList.add("slug bait");
 		shoppingList.add("Bleh");
+		shoppingList.add("chicken nuggies");
+		shoppingList.add("chicken tendies");
 	}
 	/**
 	 * loads mashing examples into the KeyboardMashChecker
 	 */
-	private void buildKeyboardMash()
-	{
-		keyboardmash [0] = "ajsdklfjaslk;jglkasjdlf";
-		keyboardmash [1] = "i loveaskljf;lkagdsndgaasd";
-		keyboardmash [2] = "S:KDJbhadsfhgabsdlfihewsgdbviyufgbalhshrfaeihbvaeisy";
-		keyboardmash [3] = "dfnslgsdlgjadsg;lhadf. [3o49[ afpi adpf9 wq3fpija fpi. rifjsdlhnsdfjsd fl;d sflds";
-	}
 	
 	private void buildCuteAnimals()
 	{
@@ -102,14 +97,13 @@ public class Chatbot
 		questions [0] = "what is your full name?";
 		questions [1] = "what is your quest?";
 		questions [2] = "Do you know what the fox says?";
-		questions [3] = "What is most commonly used password";
+		questions [3] = "What is most commonly used password?";
 		questions [4] = "What is your mother's maiden name?";
 		questions [5] = "What is your social security number?";
 		questions [6] = "How many siblings do you have?";
 		questions [7] = "What was your first pets name?";
 		questions [8] = "What is your birth date?";
-				
-		
+		questions [9] = "What is the average flight speed of a swallow?";			
 		
 	}
 /**
@@ -273,12 +267,18 @@ public class Chatbot
 	
 	public boolean contentChecker(String contentCheck)
 	{
-			if(contentCheck == null)
+			if(contentCheck == null) 
+			{
 				return false;
+			}	
 			if(contentCheck.equals(" "))
+			{
 				return false;
+			}
 			if(contentCheck.contains(content))
+			{
 				return true;
+			}			
 			return false;
 	}
 	/**
@@ -309,16 +309,13 @@ public class Chatbot
 	 * @param Searches through the shopping list going up each one and checking if user typed a matching item.
 	 * @return if user matched an item returns true, if not returns false.
 	 */
-	public boolean shoppingListChecker(String shoppingItem)
+	public boolean shoppingListChecker(String shoppingItem) 
 	{
-		for (int i = 0; i < shoppingList.size(); i++)
+		for (int i = 0; i < shoppingList.size(); i++) 
 		{
-			if (	shoppingItem.contains(shoppingList.get(i)))
-			 {
-				return true; 
-			 }
+			if (shoppingItem.toLowerCase().contains(shoppingList.get(i).toLowerCase()))
+				return true;
 		}
-				
 		return false;
 	}
 	
@@ -331,6 +328,10 @@ public class Chatbot
 			if (title.equals(movieList.get(i).getTitle().toLowerCase()))
 				
 				return true;
+		}
+		if (title.equals(""))
+		{
+			return false;
 		}
 		return false;
 	}
@@ -355,20 +356,20 @@ public class Chatbot
  */
 	public boolean quitChecker(String exitString)
 	{
-		if (exitString.equalsIgnoreCase("quit"))
+		if (exitString.equalsIgnoreCase("quit") || exitString.equals(""))
 			{
-			return false;
+			return true;
 			}
-		if (exitString.equalsIgnoreCase("exit"))
-		{
-		return true;
-		}
 		return false;
 	}
 
-//	public boolean keyboardMashChecker(String keyboardMash)
+	public boolean keyboardMashChecker(String keyboardMash)
 	{
-//		String keyboardMash = a;
+		if (keyboardMash.equalsIgnoreCase("sdf") || keyboardMash.equalsIgnoreCase("dfg") || keyboardMash.equalsIgnoreCase("cvb") || keyboardMash.contains(",./") || keyboardMash.equalsIgnoreCase("kjh"))
+		{
+			return false;
+		}
+		return true;
 	}
 	
 	public List<Movie> getMovieList()
@@ -446,5 +447,13 @@ public class Chatbot
 	public void setContent(String content)
 	{
 		this.content = content;
+	}
+	public String [] getKeyboardmash()
+	{
+		return keyboardmash;
+	}
+	public void setKeyboardmash(String [] keyboardmash)
+	{
+		this.keyboardmash = keyboardmash;
 	}
 }
