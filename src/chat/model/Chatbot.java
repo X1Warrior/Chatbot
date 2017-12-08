@@ -60,12 +60,12 @@ public class Chatbot
 		private void buildMovieList()
 		{
 			movieList.add(new Movie("Lepracon", "horror", "R", "eh seen better.", 120, LocalDate.now(), 1.2));
-			movieList.add(new Movie("Pacific Rim", "Action Packed for men", "pg13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 4.4));
-			movieList.add(new Movie("Thor ragnarock", "Comedy superhero movie", "pg13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 4.2));
+			movieList.add(new Movie("Pacific Rim", "Action Packed for men", "pg-13", "The best movie i have ever seen created for men", 132, LocalDate.of(2013, 6, 12), 4.4));
+			movieList.add(new Movie("Thor ragnarock", "Comedy superhero movie", "pg-13", "Definently one of the best superhero Movies", 130, LocalDate.of(2017, 11, 3), 4.2));
 			movieList.add(new Movie("Hidden Figures", "Historic", "PG", "Hidden Figures is a way to show the importance of all races in nasa.", 127, LocalDate.of(2016, 12, 25), 4));
-			movieList.add(new Movie("justice league", "SuperHero's fighting aliens", "PG", "Not amazing didnt do so well with critics..", 127, LocalDate.of(2017, 11, 25), 2.8));
-			movieList.add(new Movie("WonderWomen", "Action packed superHero", "PG", "Amazing critics and people everywhere loved it.", 127, LocalDate.of(2017, 9, 27), 4.6));
-
+			movieList.add(new Movie("justice league", "SuperHero's fighting aliens", "PG-13", "Not amazing didnt do so well with critics..", 120, LocalDate.of(2017, 11, 25), 2.8));
+			movieList.add(new Movie("WonderWomen", "Action packed superHero", "PG-13", "Amazing critics and people everywhere loved it.", 113, LocalDate.of(2017, 9, 27), 4.6));
+			movieList.add(new Movie("Spiderman", "Action, Adventur, Sci-fi", "PG-13", "wonderful movie intense but family friendly.", 133, LocalDate.of(2017, 7, 7), 4));
 		}
 	/**
 	 * loads values into the shoppinList array
@@ -207,7 +207,10 @@ public class Chatbot
 		
 		return validLength;
 	}
-	
+	/**
+	 * This is a html parcer, Goes through input and checks its contents for contents of an html.
+	 *  Credit to Benn Pratt for helping me with this
+	 */
 	public boolean htmlTagChecker(String input)
 	{
 		int[] checkers = new int[4];
@@ -269,7 +272,11 @@ public class Chatbot
 		
 		return true;
 	}
-	
+	/**
+	 * makes sure they are actually giving content.
+	 * @param contentCheck
+	 * @return
+	 */
 	public boolean contentChecker(String contentCheck)
 	{
 			if(contentCheck == null) 
@@ -323,7 +330,9 @@ public class Chatbot
 		}
 		return false;
 	}
-	
+	/**
+	 * Goes through trims the spaces goes through each movie title and makes sure its not blank.
+	 */
 	public boolean movieTitleChecker(String title)
 	{
 		title = title.trim().toLowerCase();
@@ -340,13 +349,16 @@ public class Chatbot
 		}
 		return false;
 	}
-	
+	/**
+	 * Makes it not eqal blank then goes through trims and checks the genre.
+	 */
 	public boolean movieGenreChecker(String genre)
 	{
 		if(genre.equals(""))
-			
+		{
 			return false;
-		
+		}
+	
 		genre = genre.trim().toLowerCase();
 		
 		for (int i = 0; i<movieList.size(); i++)
@@ -357,7 +369,7 @@ public class Chatbot
 		return false;
 	}
 /**
- * makes it so only exit will quit the program
+ * makes it so only "quit" will quit the program
  */
 	public boolean quitChecker(String exitString)
 	{
@@ -372,9 +384,13 @@ public class Chatbot
 	{
 		if (keyboardMash.equalsIgnoreCase("sdf") || keyboardMash.equalsIgnoreCase("dfg") || keyboardMash.equalsIgnoreCase("cvb") || keyboardMash.contains(",./") || keyboardMash.equalsIgnoreCase("kjh"))
 		{
+			return true;
+		}
+		if (keyboardMash.contains("S.D.F.") || keyboardMash.contains("derf")) 
+		{
 			return false;
 		}
-		return true;
+		return false;
 	}
 	
 	public List<Movie> getMovieList()

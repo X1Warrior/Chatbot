@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 public class ChatPanel extends JPanel
+/**
+ * declaring data members.
+ */
 {
 		private ChatbotController appController;
 		private JButton chatButton;
@@ -47,6 +50,9 @@ public class ChatPanel extends JPanel
 			setupListeners();
 			
 		}
+		/**
+		 * this allows the chat area to be scrollable vertically but not horizontally.
+		 */
 		private void setupScrollPane()
 		{
 			chatScrollPane.setViewportView(chatArea);
@@ -56,6 +62,9 @@ public class ChatPanel extends JPanel
 			chatArea.setWrapStyleWord(true);
 			
 		}
+		/**
+		 * this is what adds the components to the panel itself
+		 */
 		private void setupPanel()
 		{
 			this.setBackground(Color.CYAN);
@@ -91,7 +100,9 @@ public class ChatPanel extends JPanel
 			appLayout.putConstraint(SpringLayout.NORTH, infoLabel, 0, SpringLayout.NORTH, this);
 			appLayout.putConstraint(SpringLayout.WEST, infoLabel, 133, SpringLayout.WEST, this);
 		}
-		
+	/**
+	 * let the buttons "listen" for actions so basically it will do something if it is clicked.	
+	 */
 		private void setupListeners()
 		{
 			chatButton.addActionListener(new ActionListener() 

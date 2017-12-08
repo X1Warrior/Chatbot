@@ -14,8 +14,8 @@ public class Movie
 	
 	public Movie(String title, String genre, String ratingMPAA, String review, int length, LocalDate releaseDate, double starScore)
 	{
-		this.title = "";
-		this.genre = "";
+		this.title = title;
+		this.genre = genre;
 		this.ratingMPAA = "";
 		this.review = "";
 		this.length = 0;
