@@ -363,7 +363,10 @@ public class Chatbot
 		{
 			return false;
 		}
-	
+		if(genre == "Documentary")
+		{
+			return true;
+		}
 		genre = genre.trim().toLowerCase();
 		
 		for (int i = 0; i<movieList.size(); i++)
@@ -378,10 +381,18 @@ public class Chatbot
  */
 	public boolean quitChecker(String exitString)
 	{
-		if (exitString.equalsIgnoreCase("quit") || exitString.equals(""))
+		if (exitString != null)
+		{
+			if (exitString.equalsIgnoreCase("exit") || exitString.equals(""))
 			{
-			return true;
+			return false;
 			}
+			if (exitString.equalsIgnoreCase("quit"))
+			{
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
