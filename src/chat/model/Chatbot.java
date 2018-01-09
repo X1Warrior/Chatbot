@@ -83,6 +83,12 @@ public class Chatbot
 		shoppingList.add("Ramen noodles");
 		shoppingList.add("Sourpatch Watermelon");
 		shoppingList.add("Gatorade");
+		shoppingList.add("Hot peppers");
+		shoppingList.add("Onions");
+		shoppingList.add("Juice");
+		shoppingList.add("Bagel");
+		shoppingList.add("Crunchy penut butter");
+		shoppingList.add("Eggs");
 	}
 	/**
 	 * loads mashing examples into the KeyboardMashChecker
